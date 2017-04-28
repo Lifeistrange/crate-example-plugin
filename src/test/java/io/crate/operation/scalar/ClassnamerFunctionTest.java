@@ -28,7 +28,7 @@ import io.crate.analyze.symbol.Symbol;
 import io.crate.metadata.FunctionIdent;
 import io.crate.metadata.Functions;
 import io.crate.metadata.TransactionContext;
-import io.crate.operation.Input;
+import io.crate.data.Input;
 import io.crate.operation.tablefunctions.TableFunctionModule;
 import io.crate.plugin.ExamplePlugin;
 import io.crate.types.DataType;
@@ -73,7 +73,7 @@ public class ClassnamerFunctionTest {
                 .add(tableFunctionModule)
                 .createInjector()
                 .getInstance(Functions.class);
-        classnamerFunction = (ClassnamerFunction) functions.get(
+        classnamerFunction = (ClassnamerFunction) functions.getQualified(
                 new FunctionIdent(ClassnamerFunction.NAME, Collections.<DataType>emptyList())
         );
     }
@@ -97,7 +97,7 @@ public class ClassnamerFunctionTest {
         assertThat(symbol, instanceOf(Function.class));
         assertThat((Function) symbol, is(function));
     }
-
+c
     @Test
     public void testNormalizeWithCustomSetting() throws Exception {
         // lets change the setting to force normalization, function will be executed only once
