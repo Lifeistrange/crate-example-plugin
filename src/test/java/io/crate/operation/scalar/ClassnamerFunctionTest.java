@@ -97,7 +97,7 @@ public class ClassnamerFunctionTest {
         assertThat(symbol, instanceOf(Function.class));
         assertThat((Function) symbol, is(function));
     }
-c
+
     @Test
     public void testNormalizeWithCustomSetting() throws Exception {
         // lets change the setting to force normalization, function will be executed only once
